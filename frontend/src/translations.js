@@ -1,0 +1,115 @@
+export const translations = {
+  en: {
+    // Dashboard Core
+    headerTitle: "Soil Characterization Matrix",
+    headerSub: "Predict optimal targets via core sensor configurations or deep neural vision layers.",
+    tabTabular: "Lab Sensor Values",
+    tabImage: "Automated Image Vision",
+    inputN: "Nitrogen (N)",
+    inputP: "Phosphorus (P)",
+    inputK: "Potassium (K)",
+    inputTemp: "Temperature (°C)",
+    inputHumid: "Humidity (%)",
+    inputPh: "Soil pH",
+    inputRain: "Rainfall (mm)",
+    placeholderGeneric: "e.g.",
+    btnSubmit: "Execute Structural Pipeline",
+    loadingML: "Processing Neural Computations...",
+    resultOptimal: "Optimal Target Crop",
+    resultSoil: "Identified Soil Classification",
+    resultConf: "Match Verification Probability",
+    loggedInAs: "Logged in secure session as:",
+    btnLogout: "Terminate Session",
+    
+    // Specifications Labels
+    lblDesc: "Description",
+    lblColor: "Color Profile",
+    lblTexture: "Structural Texture",
+    lblCrops: "Recommended Cultivation",
+
+    // History Log Labels
+    historyTitle: "Secure Analytics History Log",
+    historyEmpty: "No analytical payloads verified in this session profile yet.",
+    colTimestamp: "Timestamp",
+    colType: "Analysis Vector",
+    colPrediction: "Pipeline Output",
+    colMetrics: "Metrics / Score",
+    colAction: "Action",
+    btnDelete: "Delete",
+    typeTabular: "Lab Sensors",
+    typeImage: "Neural Vision",
+
+    // Auth Gateway
+    loginTitle: "Secure Gateway Identity",
+    registerTitle: "Register Firewall Account",
+    subtitle: "Protected by multi-layer verification systems",
+    labelUsername: "Network Username",
+    labelPassword: "Security Password",
+    validating: "Validating Signatures...",
+    btnAuth: "Verify & Authenticate",
+    btnProvision: "Authorize Provisioning",
+    promptNew: "Unregistered asset? ",
+    linkCreate: "Create Credentials",
+    promptRegistered: "Profile already deployed? ",
+    linkReturn: "Return to Login",
+    msgSuccessReg: "Secure Profile established! Transferring to login frame...",
+    NET_ERROR: "Gateway communication threshold failure."
+  },
+  
+  hi: {
+    // Dashboard Core
+    headerTitle: "मृदा विशेषता आव्यूह",
+    headerSub: "सेंसर कॉन्फ़िगरेशन या डीप न्यूरल विज़न परतों के माध्यम से इष्टतम लक्ष्यों की भविष्यवाणी करें।",
+    tabTabular: "लैब सेंसर मान",
+    tabImage: "स्वचालित छवि दृष्टि",
+    inputN: "नाइट्रोजन (N)",
+    inputP: "फास्फोरस (P)",
+    inputK: "पोटैशियम (K)",
+    inputTemp: "तापमान (°C)",
+    inputHumid: "आर्द्रता (%)",
+    inputPh: "मृदा pH",
+    inputRain: "वर्षा (mm)",
+    placeholderGeneric: "उदा.",
+    btnSubmit: "संरचनात्मक पाइपलाइन निष्पादित करें",
+    loadingML: "तंत्रिका गणनाओं को संसाधित किया जा रहा है...",
+    resultOptimal: "इष्टतम लक्ष्य फसल",
+    resultSoil: "पहचाना गया मृदा वर्गीकरण",
+    resultConf: "मिलान सत्यापन संभावना",
+    loggedInAs: "के रूप में सुरक्षित सत्र में लॉग इन किया गया:",
+    btnLogout: "सत्र समाप्त करें",
+
+    // Specifications Labels
+    lblDesc: "विवरण",
+    lblColor: "रंग प्रोफ़ाइल",
+    lblTexture: "संरचनात्मक बनावट",
+    lblCrops: "अनुशंसित खेती",
+
+    // History Log Labels
+    historyTitle: "सुरक्षित विश्लेषिकी इतिहास लॉग",
+    historyEmpty: "इस सत्र प्रोफ़ाइल में अभी तक कोई विश्लेषणात्मक पेलोड सत्यापित नहीं हुआ है।",
+    colTimestamp: "समय-मुहर",
+    colType: "विश्लेषण वेक्टर",
+    colPrediction: "पाइपलाइन आउटपुट",
+    colMetrics: "मेट्रिक्स / स्कोर",
+    colAction: "कार्रवाई",
+    btnDelete: "हटाएं",
+    typeTabular: "लैब सेंसर",
+    typeImage: "न्यूरल विज़न",
+    
+    // Auth Gateway
+    loginTitle: "सुरक्षित गेटवे पहचान",
+    registerTitle: "फायरवॉल खाता पंजीकृत करें",
+    subtitle: "बहु-स्तरीय सत्यापन प्रणालियों द्वारा संरक्षित",
+    labelUsername: "नेटवर्क उपयोगकर्ता नाम",
+    labelPassword: "सुरक्षा पासवर्ड",
+    validating: "हस्ताक्षरों को मान्य किया जा रहा है...",
+    btnAuth: "सत्यापित करें और प्रमाणित करें",
+    btnProvision: "प्राधिकरण प्रावधान",
+    promptNew: "अपंजीकृत संपत्ति? ",
+    linkCreate: "क्रेडेंशियल बनाएं",
+    promptRegistered: "प्रोफ़ाइल पहले से ही तैनात है? ",
+    linkReturn: "लॉगिन पर लौटें",
+    msgSuccessReg: "सुरक्षित प्रोफ़ाइल स्थापित! लॉगिन फ्रेम में स्थानांतरित किया जा रहा है...",
+    NET_ERROR: "गेटवे संचार सीमा विफलता।"
+  }
+};
