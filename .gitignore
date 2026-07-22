@@ -1,24 +1,48 @@
-# Dependencies
+# Node / frontend
 node_modules/
+.vite/
+pnpm-lock.yaml
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Python / backend
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
+*.pyd
 *.egg-info/
+venv/
+.env
+.env.*
+local_database.json
+soil_model.pkl
+label_encoder.pkl
+soil_image_model.h5
+classes.txt
+*.h5
+*.pkl
+*.ckpt
+*.pth
+
+# Build and coverage
 dist/
 build/
+.next/
+out/
+htmlcov/
+.pytest_cache/
+coverage/
+coverage.xml
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# IDE
+# IDE / editor
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
 
 # OS
 .DS_Store
@@ -27,23 +51,6 @@ Thumbs.db
 # Logs
 logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-
-# Build output
-dist/
-build/
-.next/
-out/
-
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
-
-# Package manager lock files (optional - uncomment if needed)
-# package-lock.json
-# yarn.lock
 
 # Temporary files
 *.tmp
