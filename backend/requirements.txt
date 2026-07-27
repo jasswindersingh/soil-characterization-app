@@ -8,3 +8,6 @@ xgboost
 pillow
 tensorflow
 torch
+passlib[bcrypt]
+bcrypt<5
+PyJWT

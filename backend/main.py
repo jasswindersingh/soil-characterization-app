@@ -28,6 +28,15 @@ ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 DB_FILE = "local_database.json"
 
+
+def normalize_password(password: str) -> str:
+    if not password:
+        return password
+    encoded = password.encode("utf-8")
+    if len(encoded) <= 72:
+        return password
+    return encoded[:72].decode("utf-8", errors="ignore")
+
 SOIL_CHARACTERISTICS = {
     "Alluvial_Soil": {
         "description": "Highly fertile soil formed by river silt deposits. Rich in phosphoric acid, lime, and humus.",
@@ -119,9 +128,10 @@ def register_user(user: UserAuthSchema):
     db = load_local_database()
     if user.username in db:
         raise HTTPException(status_code=400, detail="Identity profile already registered.")
+    normalized_password = normalize_password(user.password)
     db[user.username] = {
         "username": user.username,
-        "password": pwd_context.hash(user.password),
+        "password": pwd_context.hash(normalized_password),
         "history": []
     }
     save_to_local_database(db)
@@ -131,7 +141,8 @@ def register_user(user: UserAuthSchema):
 def login_user(user: UserAuthSchema):
     db = load_local_database()
     db_user = db.get(user.username)
-    if not db_user or not pwd_context.verify(user.password, db_user["password"]):
+    normalized_password = normalize_password(user.password)
+    if not db_user or not pwd_context.verify(normalized_password, db_user["password"]):
         raise HTTPException(status_code=401, detail="Invalid signature or decryption key mismatch.")
     token = jwt.encode({"sub": user.username, "exp": datetime.utcnow() + timedelta(hours=2)}, SECRET_KEY, algorithm=ALGORITHM)
     return {"success": True, "token": token, "username": user.username}
