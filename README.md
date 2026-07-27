@@ -5,17 +5,17 @@ A full-stack soil characterization application with a FastAPI backend and React 
 ## Features
 
 - Crop recommendation from soil metrics (N, P, K, temperature, humidity, pH, rainfall)
-- Soil type classification from images
-- User registration, login, and usage history
-- Local JSON database storage for user profiles and history
-- Separate `backend` and `frontend` workspaces for easy development
+- Soil type classification from image uploads
+- User registration, login, and history tracking
+- Local JSON database storage for user profiles and activity history
+- Separate `backend` and `frontend` workspaces for easy local development
 
 ## Repository structure
 
-- `backend/` — FastAPI application, Python requirements, local database, and model artifacts
+- `backend/` — FastAPI application, Python dependencies, local database, and supporting model logic
 - `frontend/` — React + Vite single-page application
 - `README.md` — this file
-- `.gitignore` — ignored files for Python, Node, and development artifacts
+- `.gitignore` — local and generated files excluded from source control
 
 ## Prerequisites
 
@@ -25,32 +25,42 @@ A full-stack soil characterization application with a FastAPI backend and React 
 
 ## Backend setup
 
-1. Open a terminal in `backend/`
-2. Create and activate a virtual environment:
+1. Open a terminal in the repository root and switch to the backend folder:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+cd backend
 ```
 
-3. Install dependencies:
+2. Create and activate a Python virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+3. Install Python dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Start the FastAPI server:
+4. Start the FastAPI backend:
 
 ```bash
-uvicorn main:app --reload
+python -m uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
-The backend will be available at `http://127.0.0.1:8000`.
+The backend should now be available at `http://127.0.0.1:8000/`.
 
 ## Frontend setup
 
-1. Open a terminal in `frontend/`
-2. Install dependencies:
+1. Open a separate terminal and switch to the frontend folder:
+
+```bash
+cd frontend
+```
+
+2. Install frontend dependencies:
 
 ```bash
 npm install
@@ -62,19 +72,30 @@ npm install
 npm run dev
 ```
 
-The frontend will typically be available at `http://localhost:5173`.
+The frontend will usually be available at `http://localhost:5173/`.
 
-## Notes
+## Running the app together
 
-- The backend currently uses a hard-coded `SECRET_KEY` in `backend/main.py` for development. Change it before deploying to production.
-- The local database file `backend/local_database.json` is ignored in Git and managed locally.
-- Model artifact files like `soil_image_model.h5` and serialized model files are also ignored by Git.
+- Start the backend first at `http://127.0.0.1:8000`
+- Then start the frontend
+- Use the frontend UI to register, log in, and interact with the soil prediction features
+
+## Important notes
+
+- The backend currently contains a development `SECRET_KEY` in `backend/main.py`. Replace it before deploying.
+- The project ignores local environment files and model artifacts in `.gitignore`, including `.venv`, `backend/local_database.json`, `backend/soil_image_model.h5`, and `backend/*.pkl`.
+- If backend startup fails when running from a sandboxed environment, run it from a normal terminal so it can bind to `127.0.0.1:8000`.
 
 ## Useful commands
 
-- Backend: `cd backend && uvicorn main:app --reload`
-- Frontend: `cd frontend && npm run dev`
+```bash
+cd backend && source .venv/bin/activate && python -m uvicorn main:app --host 127.0.0.1 --port 8000
+```
+
+```bash
+cd frontend && npm run dev
+```
 
 ## License
 
-This repository does not include a license file. Add one if you want to share or publish the project.
+This repository does not include a license file. Add one if you want to publish or share the project publicly.
