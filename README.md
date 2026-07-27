@@ -98,14 +98,6 @@ cd frontend && npm run dev
 
 ## License
 
-This repository does not currently include a formal license file.
+This project is licensed under the MIT License.
 
-If you want to publish or share the project, add a license file such as `LICENSE` or `LICENSE.md`.
-
-Common open-source license choices:
-
-- MIT License
-- Apache License 2.0
-- GNU GPL v3
-
-Once you add a license file, update this section with the selected license name.
+See the `LICENSE` file for details.
