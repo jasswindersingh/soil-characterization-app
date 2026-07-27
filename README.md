@@ -98,4 +98,14 @@ cd frontend && npm run dev
 
 ## License
 
-This repository does not include a license file. Add one if you want to publish or share the project publicly.
+This repository does not currently include a formal license file.
+
+If you want to publish or share the project, add a license file such as `LICENSE` or `LICENSE.md`.
+
+Common open-source license choices:
+
+- MIT License
+- Apache License 2.0
+- GNU GPL v3
+
+Once you add a license file, update this section with the selected license name.
