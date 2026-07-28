@@ -21,15 +21,19 @@ backend/venv/
 .env
 .env.*
 backend/local_database.json
-backend/classes.txt
-backend/soil_image_model.h5
-backend/soil_model.pkl
-backend/label_encoder.pkl
 backend/data/
+
+# Model Files (Ignore generic weights except our required backend models)
 *.h5
 *.pkl
 *.ckpt
 *.pth
+
+# Explicitly UN-IGNORE required production model files
+!backend/classes.txt
+!backend/soil_image_model.h5
+!backend/soil_model.pkl
+!backend/label_encoder.pkl
 
 # Build and coverage
 dist/
