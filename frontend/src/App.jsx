@@ -8,6 +8,8 @@ import './App.css';
 
 gsap.registerPlugin(useGSAP);
 
+const API_BASE_URL = 'https://soil-characterization-app.onrender.com';
+
 function App() {
   const { t, locale, changeLanguage } = useTranslation();
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('authToken'));
@@ -31,7 +33,7 @@ function App() {
     const token = localStorage.getItem('authToken');
     if (!token) return;
     try {
-      const response = await fetch('http://localhost:8000/history', {
+      const response = await fetch(`${API_BASE_URL}/history`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -55,7 +57,6 @@ function App() {
     audio.play().catch(() => {});
   };
 
-  // Crisp mechanical removal/trash click audio trigger
   const playDeleteSound = () => {
     const audio = new Audio('/mixkit-remove-item-from-basket-2440.wav');
     audio.volume = 0.4;
@@ -120,7 +121,7 @@ function App() {
           temperature: parseFloat(formData.temperature), humidity: parseFloat(formData.humidity),
           ph: parseFloat(formData.ph), rainfall: parseFloat(formData.rainfall)
         };
-        response = await fetch('http://localhost:8000/predict', {
+        response = await fetch(`${API_BASE_URL}/predict`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -132,7 +133,7 @@ function App() {
         if (!selectedFile) throw new Error("Please pick a soil sample image asset first.");
         const filePayload = new FormData();
         filePayload.append('file', selectedFile);
-        response = await fetch('http://localhost:8000/predict-image', {
+        response = await fetch(`${API_BASE_URL}/predict-image`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` },
           body: filePayload,
@@ -142,7 +143,6 @@ function App() {
       const data = await response.json();
       if (response.ok && data.success) {
         playSuccessChime();
-        // FIXED: Preserving characteristics inside state explicitly
         setPrediction(
           activeMode === 'tabular' 
             ? { type: 'crop', value: data.prediction } 
@@ -169,7 +169,7 @@ function App() {
     const token = localStorage.getItem('authToken');
     if (!token) return;
     try {
-      const response = await fetch(`http://localhost:8000/history?timestamp=${encodeURIComponent(timestamp)}`, {
+      const response = await fetch(`${API_BASE_URL}/history?timestamp=${encodeURIComponent(timestamp)}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -189,7 +189,6 @@ function App() {
 
   const pg = t.placeholderGeneric;
 
-  // Hybrid Verification Engine: Checks translations.js with backend direct objects as a fallback
   const getSoilTranslation = (soilValue) => {
     if (!soilValue) return null;
     const cleanedValue = soilValue.toLowerCase().replace(' ', '_');
@@ -201,7 +200,6 @@ function App() {
 
   const translatedSoilProfile = prediction && prediction.type === 'soil' ? getSoilTranslation(prediction.value) : null;
   
-  // Merge dictionaries dynamically to guarantee presentation blocks never remain blank
   const localSoilData = prediction && prediction.type === 'soil' ? {
     description: translatedSoilProfile?.description || prediction.characteristics?.description,
     color: translatedSoilProfile?.color || prediction.characteristics?.color,
@@ -282,7 +280,6 @@ function App() {
                   </div>
                 )}
                 
-                {/* SAFE RUNTIME RENDERING FRAMEWORK */}
                 {localSoilData && localSoilData.description && (
                   <div className="characteristics-box" style={{ marginTop: '20px', padding: '15px', borderTop: '1px solid #e2e8f0', textAlign: 'left', fontSize: '14px', lineHeight: '1.6' }}>
                     <p style={{ margin: '6px 0' }}><strong>{t.lblDesc}:</strong> {localSoilData.description}</p>
@@ -312,7 +309,7 @@ function App() {
                   <th style={{ padding: '12px 8px' }}>{t.colType}</th>
                   <th style={{ padding: '12px 8px' }}>{t.colPrediction}</th>
                   <th style={{ padding: '12px 8px' }}>{t.colMetrics}</th>
-                  <th style={{ padding: '12px 8px', textAlignment: 'center' }}>{t.colAction}</th>
+                  <th style={{ padding: '12px 8px', textAlign: 'center' }}>{t.colAction}</th>
                 </tr>
               </thead>
               <tbody>
@@ -326,7 +323,7 @@ function App() {
                     </td>
                     <td style={{ padding: '12px 8px', fontWeight: '700', color: '#1b4d3e' }}>{item.output}</td>
                     <td style={{ padding: '12px 8px', fontSize: '13px', color: '#57606f' }}>{item.metric}</td>
-                    <td style={{ padding: '12px 8px', textAlignment: 'center' }}>
+                    <td style={{ padding: '12px 8px', textAlign: 'center' }}>
                       <InteractiveButton 
                         onClick={() => handleDeleteRecord(item.timestamp)}
                         style={{ padding: '4px 10px', backgroundColor: '#fee2e2', color: '#dc2626', border: '1px solid #fca5a5', borderRadius: '4px', fontSize: '12px', fontWeight: '600' }}
