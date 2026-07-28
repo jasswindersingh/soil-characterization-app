@@ -1,5 +1,9 @@
 # soil-characterization-app
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+**Author:** Jasswinder Singh
+
 A full-stack soil characterization application with a FastAPI backend and React + Vite frontend.
 
 ## Features
@@ -101,3 +105,13 @@ cd frontend && npm run dev
 This project is licensed under the MIT License.
 
 See the `LICENSE` file for details.
+
+### Other common open-source licenses
+
+If you want to choose a different license later, here are common options:
+
+- **MIT License** — simple, permissive, and widely used.
+- **Apache License 2.0** — permissive with patent protection and explicit contribution terms.
+- **GNU GPL v3** — strong copyleft license for projects that must share derivative works under the same terms.
+
+Add a `LICENSE` or `LICENSE.md` file and update this section if you switch to a different license.
