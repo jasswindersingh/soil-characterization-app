@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**Author:** Jasswinder Singh
+**Author:** Jasswinder_Singh
 
 A full-stack soil characterization application with a FastAPI backend and React + Vite frontend.
 
